@@ -18,7 +18,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Generate Prisma Client
-RUN npx prisma generate
+ENV DATABASE_URL="file:./dev.db"
+RUN npm exec prisma generate
 
 # Build Next.js
 ENV NEXT_TELEMETRY_DISABLED 1
