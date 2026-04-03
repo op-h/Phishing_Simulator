@@ -18,7 +18,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Generate Prisma Client
-ENV DATABASE_URL="file:./dev.db"
+ENV DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres"
 RUN npm exec prisma generate
 
 # Build Next.js
